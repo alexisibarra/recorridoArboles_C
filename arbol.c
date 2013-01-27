@@ -17,18 +17,16 @@
  */
 #include "arbol.h"
 #include <errno.h>
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include <sysexits.h>
 
 /* 
  * ===  FUNCTION  ======================================================================
- *       Nombre:  InsertarEmp
- *  Descripción:  Se inserta un nuevo empleado en la lista. La inserción se hace siempre
- *  							al inicio de la lista por eficiencia
- *			Entrada:	Lista l en la cual se insertará el estudiante.
- *								ESTUDIANTE e con la información del estudiante.
- *			 Salida:  Lista con la inserción realizada
+ *         Name:  nuevoArbol
+ *  Description:  Crea un nuevo árbol unitario y lo inicializa con su elementto en 0
+ *  							y dos ramas nulas
  * =====================================================================================
  */
 Arbol
@@ -47,8 +45,29 @@ nuevoArbol()
 
 /* 
  * ===  FUNCTION  ======================================================================
+ *         Name:  nuevoNodo
+ *  Description:  Crea un nuevo árbol unitario y lo inicializa con su elementto en 0
+ *  							y dos ramas nulas
+ * =====================================================================================
+ */
+Arbol
+nuevoNodo(int elem)
+{
+	Arbol Temp = malloc (sizeof (NODO));
+	if (Temp==NULL){
+		fprintf(stderr,"Se produjo un error de manejo de memoria. Fin del programa\n");
+		exit(EX_DATAERR);
+	}
+	Temp->Elem=elem;
+	Temp->izq=NULL;
+	Temp->der=NULL;
+	return Temp;
+}
+
+/* 
+ * ===  FUNCTION  ======================================================================
  *         Name:  Imprimir
- *  Description:  
+ *  Description:  Imprime el arbol por niveles
  * =====================================================================================
  */
 void
@@ -68,26 +87,25 @@ ramaDer(Arbol a)
 	return a->der;
 }
 
-//Arbol
-//Insertar(Arbol a, NODO * n, char camino[])
-//{
-//	if (a==NULL){
-//		
-//	}
-//  Arbol Temp;
-//
-//  Temp = malloc (sizeof (NODO));
-//	if (Temp==NULL){
-//		fprintf(stderr,"Seprodujo un error de manejo de memoria. Fin del programa\n");
-//		exit(EX_DATAERR);
-//	}
-//  Temp->Nombre = e->Nombre;	
-//  Temp->Nota = e->Nota;
-//  Temp->Carnet = e->Carnet;
-//  Temp->proximo = l;
-//  return Temp;
-//}
-//
+
+void
+Insertar(Arbol a, int elem, char *camino)
+{
+	char *siguiente = (char*)cabeza(camino);
+	char *resto = (char*)cola(camino);
+	if (strcmp(siguiente,"I")==0){
+		printf("Izquierda\n");
+		Insertar(a,elem,resto);
+	}
+	if (strcmp(siguiente,"D")==0 ) {
+		printf("Derecha\n");
+		Insertar(a,elem,resto);
+	}
+	if (strcmp(siguiente,"")==0 ) {
+		printf("Insertar elem\n");
+	}
+}
+
 ///* 
 // * ===  FUNCTION  ======================================================================
 // *       Nombre:  EliminarEst
