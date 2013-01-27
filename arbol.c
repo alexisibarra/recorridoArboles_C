@@ -117,15 +117,19 @@ Insertar(Arbol a, int elem, char *camino)
 	char *resto = (char*)cola(camino);
 	if (strcmp(siguiente,"I")==0){
 		printf("Izquierda\n");
-		a->izq=nuevoArbol();
+		if (a->izq==NULL){
+			a->izq=nuevoArbol();
+		}
 		Insertar(a->izq,elem,resto);
 	}
 	if (strcmp(siguiente,"D")==0 ) {
 		printf("Derecha\n");
-		a->der=nuevoArbol();
+		if (a->der==NULL){
+			a->der=nuevoArbol();
+		}
 		Insertar(a->der,elem,resto);
 	}
-	if (strcmp(siguiente,"")==0 ) {
+	if (strcmp(siguiente,"")==0) {
 		a->Elem=elem;
 		printf("Insertar elem\n");
 	}
