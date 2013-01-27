@@ -19,14 +19,14 @@
 #include <stdlib.h>
 #include <string.h>
 
-char *
-cabeza (char * string)
+char*
+cabeza (char* string)
 {
 	return strndup(string+0, 1);
 }
 
-char *
-cola (char * string)
+char*
+cola (char* string)
 {
 	return strndup(string+1,strlen(string));
 }
