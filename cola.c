@@ -22,7 +22,7 @@
 #include <string.h>
 #include <sysexits.h>
 
-cola CREAR () 
+cola crear () 
 {
 	cola C;
 
@@ -41,7 +41,7 @@ int vacia (cola C)
 	return(C->ant == C->post);
 }
 
-void PONER_EN_COLA (Arbol a,cola C) 
+void encolar (Arbol a,cola C) 
  {
   C->post->siguiente = (celda *) malloc(sizeof(celda));
   if (C->post->siguiente == NULL) 
@@ -51,29 +51,20 @@ void PONER_EN_COLA (Arbol a,cola C)
   C->post->siguiente = NULL;
  }
 
-void QUITAR_DE_COLA (cola C) 
+Arbol desencolar (cola C) 
 {
 	celda *aux;
+	Arbol a;
 
 	if (vacia(C))
 		 error("Cola vacia.");
 	aux = C->ant;
+	a = aux->elemento;
 	C->ant = C->ant->siguiente;
 	free(aux);
+	return(a);
 }
 
-cola
-nuevaCola()
-{
-//	cola Temp = malloc (sizeof (NODOC));
-//	if (Temp==NULL){
-//		fprintf(stderr,"Se produjo un error de manejo de memoria. Fin del programa\n");
-//		exit(EX_DATAERR);
-//	}
-//	Temp->Elem=NULL;
-//	Temp->sig=NULL;
-	return NULL;
-}
 
 /* 
  * ===  FUNCTION  ======================================================================
@@ -81,11 +72,11 @@ nuevaCola()
  *  Description:  
  * =====================================================================================
  */
-void
-encolar (cola c)
-{
-//	return 0;
-}		/* -----  end of function encolar  ----- */
+//void
+//encolar (cola c)
+//{
+////	return 0;
+//}		/* -----  end of function encolar  ----- */
 
 /* 
  * ===  FUNCTION  ======================================================================
@@ -93,9 +84,9 @@ encolar (cola c)
  *  Description:  
  * =====================================================================================
  */
-void
-desencolar (cola c)
-{
-//	return 0;
-}		/* -----  end of function desencolar  ----- */
+//void
+//desencolar (cola c)
+//{
+////	return 0;
+//}		/* -----  end of function desencolar  ----- */
 

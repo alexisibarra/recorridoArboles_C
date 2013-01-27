@@ -30,22 +30,8 @@ typedef struct {
 } tcola;
 
 typedef tcola *cola;
-//
-//struct NodoC {
-//       Arbol Elem;
-//       struct NodoC *sig;
-//};
-//
-//typedef struct NodoC NODOC;
-//typedef struct NodoC *Cola;
-//
-///* Prototipos de funciones definidas en listas.c */
-////extern cola Insertar(cola a, NODO *, char[]);
-//extern Cola nuevaCola();
-//extern void encolar(Cola);
-//extern void desencolar(Cola);
 
-extern cola Crear();
+extern cola crear();
 extern int vacia (cola); 
-extern void QUITAR_DE_COLA (cola);
-extern void PONER_EN_COLA (Arbol,cola);
+extern void encolar (Arbol,cola);
+extern Arbol desencolar (cola);
