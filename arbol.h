@@ -34,4 +34,5 @@ typedef struct Nodo *Arbol;
 extern Arbol nuevoArbol();
 extern Arbol ramaIzq(Arbol);
 extern Arbol ramaDer(Arbol);
-extern void Imprimir(Arbol);
+extern void Imprimir(Arbol,int);
+

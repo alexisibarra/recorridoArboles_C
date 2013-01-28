@@ -7,7 +7,7 @@
  *
  *        Version:  1.0
  *        Created:  18/01/13 21:41:16
- *       Modified:  18/01/13 21:41:23
+ *       Modified:  27/01/13 10:25:09
  *       Compiler:  gcc
  *
  *         Author:  Alexis Ibarra (ai), ar.ibarrasalas@gmail.com
@@ -64,20 +64,73 @@ nuevoNodo(int elem)
 	return Temp;
 }
 
+
 /* 
  * ===  FUNCTION  ======================================================================
  *         Name:  Imprimir
- *  Description:  Imprime el arbol por niveles
+ *  Description:  Imprime el arbol en recorrido preorden 
+ * =====================================================================================
+ */
+void preOrden(Arbol a){
+  if (a != NULL) {
+		printf("%d\n",a->Elem);
+    preOrden(a->izq);
+    preOrden(a->der);
+  }
+}
+
+/* 
+ * ===  FUNCTION  ======================================================================
+ *         Name:  Imprimir
+ *  Description:  Imprime el arbol en recorrido postorden
+ * =====================================================================================
+ */
+void postOrden(Arbol a){
+  if (a != NULL) {
+    preOrden(a->izq);
+    preOrden(a->der);
+		printf("%d\n",a->Elem);
+  }
+}
+
+/* 
+ * ===  FUNCTION  ======================================================================
+ *         Name:  Imprimir
+ *  Description:  Imprime el arbol en recorrido inorden
+ * =====================================================================================
+ */
+void inOrden(Arbol a){
+  if (a != NULL) {
+    preOrden(a->izq);
+		printf("%d\n",a->Elem);
+    preOrden(a->der);
+  }
+}
+
+/* 
+ * ===  FUNCTION  ======================================================================
+ *         Name:  Imprimir
+ *  Description:  Imprime el arbol seleccionando el tipo de recorrido 
  * =====================================================================================
  */
 void
-Imprimir (Arbol a){
-//	printf("Elem: %d\n", a->Elem);
-  if (a != NULL) {
-		printf("%d\n",a->Elem);
-    Imprimir(a->izq);
-    Imprimir(a->der);
-  }
+Imprimir (Arbol a, int n){
+	switch ( n ) {
+		case 0:	
+			preOrden(a);
+			break;
+
+		case 1:	
+			postOrden(a);
+			break;
+
+		case 2:	
+			inOrden(a);
+			break;
+
+		default:	
+			break;
+	}				/* -----  end switch  ----- */
 }
 
 /* 
@@ -113,17 +166,15 @@ ramaDer(Arbol a)
 void
 Insertar(Arbol a, int elem, char *camino)
 {
-	char *siguiente = (char*)cabeza(camino);
-	char *resto = (char*)cola(camino);
+	char *siguiente = (char*)getCabeza(camino);
+	char *resto = (char*)getCola(camino);
 	if (strcmp(siguiente,"I")==0){
-		printf("Izquierda\n");
 		if (a->izq==NULL){
 			a->izq=nuevoArbol();
 		}
 		Insertar(a->izq,elem,resto);
 	}
 	if (strcmp(siguiente,"D")==0 ) {
-		printf("Derecha\n");
 		if (a->der==NULL){
 			a->der=nuevoArbol();
 		}
@@ -131,7 +182,6 @@ Insertar(Arbol a, int elem, char *camino)
 	}
 	if (strcmp(siguiente,"")==0) {
 		a->Elem=elem;
-		printf("Insertar elem\n");
 	}
 }
 
