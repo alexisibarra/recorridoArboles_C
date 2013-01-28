@@ -21,3 +21,4 @@
 #include <stdlib.h>
 
 extern void amplitud(Arbol);
+extern int verificar(Arbol);

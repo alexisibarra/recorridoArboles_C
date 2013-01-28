@@ -67,13 +67,35 @@ void amplitud(Arbol a)
 		encolar(&cola,a);    
 		while (!vacia(cola)) {      
 			desencolar(&cola,&aux);      
-			printf("%d\n",aux->Elem); //visitar(aux);      
+			printf("%d ",aux->Elem); //visitar(aux);      
 			if (aux->izq != NULL)
 				encolar(&cola,aux->izq);     
 			if (aux->der!= NULL)
 				encolar(&cola,aux->der);    
 		}  
 	}
+	printf("\n");      
 }
 
+int verificar(Arbol a)
+{  
+  struct tcola *cola;
+	Arbol aux;    
+	if (a != NULL) 
+	{    
+		crear(&cola);
+		encolar(&cola,a);    
+		while (!vacia(cola)) {      
+			desencolar(&cola,&aux);      
+			if (aux->Elem==-1){
+				return 1;
+			}
+			if (aux->izq != NULL)
+				encolar(&cola,aux->izq);     
+			if (aux->der!= NULL)
+				encolar(&cola,aux->der);    
+		}  
+	}
+	return 0;
+}
 
