@@ -20,13 +20,14 @@
 #include <string.h>
 
 char*
-cabeza (char* string)
+getCabeza (char* string)
 {
 	return strndup(string+0, 1);
 }
 
 char*
-cola (char* string)
+getCola (char* string)
 {
 	return strndup(string+1,strlen(string));
 }
+

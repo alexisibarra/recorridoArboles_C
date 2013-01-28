@@ -15,12 +15,13 @@
  *
  * =====================================================================================
  */
-
+#include "arbol.h"
 #include <stdio.h>
 #include <stdlib.h>
 
 /* Prototipos de funciones definidas en listas.c */
 //extern Arbol Insertar(Arbol a, NODO *, char[]);
-extern char *cabeza(char*);
-extern char *cola(char*);
+extern char *getCabeza(char*);
+extern char *getCola(char*);
+extern void amplitud(Arbol a);
 
