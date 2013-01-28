@@ -109,7 +109,7 @@ void procesarLinea(char *line)
     match_regex(& r, line,a);
 		int ver = verificar(a);
 		if (ver==1) {
-			printf("Incompleto\n");
+			printf("incompleto\n");
 		}
 		else {
 			amplitud(a);
