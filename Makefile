@@ -1,24 +1,24 @@
 CC = gcc
 CFLAGS = 
-OBJS = arbol.o treesLevel.o utiles.o cola.o recorridos.o
+OBJS = arbol.o treesLevel.o utiles.o amplitud.o
 
 treesLevel: $(OBJS) 
 	$(CC) $(CFLAGS) $(OBJS) -o $@
 
-arbol.o: arbol.c arbol.h
-	$(CC) $(CFLAGS) -c arbol.c
-
 treesLevel.o: treesLevel.c arbol.h
 	$(CC) $(CFLAGS) -c treesLevel.c
+
+arbol.o: arbol.c arbol.h
+	$(CC) $(CFLAGS) -c arbol.c
 
 utiles.o: utiles.c utiles.h
 	$(CC) $(CFLAGS) -c utiles.c
 
-cola.o: cola.c cola.h
-	$(CC) $(CFLAGS) -c cola.c
-
 recorridos.o: recorridos.c recorridos.h
 	$(CC) $(CFLAGS) -c recorridos.c
+
+amplitud.o: amplitud.c amplitud.h
+	$(CC) $(CFLAGS) -c amplitud.c
 
 clean:
 	/bin/rm *.o treesLevel
