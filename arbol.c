@@ -181,7 +181,11 @@ Insertar(Arbol a, int elem, char *camino)
 		Insertar(a->der,elem,resto);
 	}
 	if (strcmp(siguiente,"")==0) {
-		a->Elem=elem;
+		if (a->Elem==-1){
+			a->Elem=elem;
+		}else{
+			a->Elem=-1;
+		}
 	}
 }
 
