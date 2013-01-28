@@ -31,7 +31,7 @@ typedef struct {
 
 typedef tcola *cola;
 
-extern cola crear();
+extern cola nuevaCola();
 extern int vacia (cola); 
 extern void encolar (Arbol,cola);
 extern Arbol desencolar (cola);

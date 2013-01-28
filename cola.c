@@ -22,13 +22,13 @@
 #include <string.h>
 #include <sysexits.h>
 
-cola crear () 
+cola nuevaCola () 
 {
-	cola C;
-
-	C = (tcola *) malloc(sizeof(tcola));
-	if (C == NULL) 
-		 error("Memoria insuficiente."); 
+	cola C = malloc(sizeof(tcola));
+	if (C==NULL){
+		fprintf(stderr,"Se produjo un error de manejo de memoria. Fin del programa\n");
+		exit(EX_DATAERR);
+	}
 	C->ant = C->post = (celda *)malloc(sizeof(celda));
 	if (C->ant == NULL) 
 		 error("Memoria insuficiente.");
@@ -59,7 +59,8 @@ Arbol desencolar (cola C)
 	if (vacia(C))
 		 error("Cola vacia.");
 	aux = C->ant;
-	a = aux->elemento;
+	a = C->ant->elemento;
+//	printf("%d\n",a);
 	C->ant = C->ant->siguiente;
 	free(aux);
 	return(a);
