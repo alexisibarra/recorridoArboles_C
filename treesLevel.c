@@ -15,24 +15,27 @@
  *
  * =====================================================================================
  */
-#include <stdlib.h>
+#include "amplitud.h"
 #include <stdio.h>
-#include "arbol.h"
+#include <stdlib.h>
 
-/* 
- * ===  FUNCTION  ======================================================================
- *         Name:  main
- *  Description:  
- * =====================================================================================
- */
-	int
-main ( int argc, char *argv[] )
+
+int main(void)
 {
-	Arbol a = nuevoArbol();
-//	a->Elem=2;
-	a->izq	=	nuevoArbol(a);
-	Imprimir(a);
+  struct tcola *cola;
+  Arbol a = nuevoArbol();
+	Insertar(a,1,"");  	
+	Insertar(a,2,"I");  	
+	Insertar(a,3,"D");  	
+	Insertar(a,4,"II");  	
+	Insertar(a,5,"ID");  	
+	Insertar(a,6,"DI");  	
+	Insertar(a,7,"III");  	
+	Insertar(a,8,"IID");  	
+	Insertar(a,9,"IDD");  	
 
+	amplitud(a);
+
+	free(a);
 	return EXIT_SUCCESS;
-}				/* ----------  end of function main  ---------- */
-
+}
